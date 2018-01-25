@@ -103,6 +103,8 @@ for i, batch in enumerate(batches):
     
     if i % args.evaluate_every == 0:
         
+        model.eval()
+        
         x = autograd.Variable(torch.from_numpy(x_dev))
         pred = model.forward(x)
         
@@ -115,6 +117,7 @@ for i, batch in enumerate(batches):
     
         print "Step "+str(i+1)+", Accuracy: " + "{:.2f}".format(accuracy)
         
+        model.train()
         
 
 
